@@ -1,8 +1,8 @@
 # gi_invsqrt
 
-reciprocal square root
+Reciprocal square root
 
-Assumes use of Linux tcsh scripts and a recent GNU gcc compiler.
+The evolved code is accurate to double precision
 
 C Code derived from:
 
@@ -10,8 +10,6 @@ C Code derived from:
   In  7th edition of GI @ GECCO Companion 2019, pages 1709-1714, Prague, Czech Republic, 2019. ACM 
   http://www.cs.ucl.ac.uk/staff/W.Langdon/ftp/papers/langdon_2019_GI7.pdf
   https://doi.org/10.1145/3319619.3326800
-
-The evolved code is accurate to double precision
 
 GGGP project at http://www.cs.ucl.ac.uk/staff/W.Langdon/gggp
 
