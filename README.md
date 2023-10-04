@@ -11,7 +11,7 @@ C Code derived from
 W. B. Langdon. Genetic Improvement of Data gives double precision invsqrt.
 In  7th edition of GI @ GECCO Companion 2019, pages 1709-1714, Prague, Czech Republic, 2019. ACM 
 http://www.cs.ucl.ac.uk/staff/W.Langdon/ftp/papers/langdon_2019_GI7.pdf
-doi:10.1145/3319619.3326800
+https://doi.org/10.1145/3319619.3326800
 
 The evolved code is accurate to double precision
 
