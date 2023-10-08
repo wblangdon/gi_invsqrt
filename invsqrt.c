@@ -21,6 +21,7 @@ glibc-2.29/sysdeps/powerpc/fpu/e_sqrt.c as 2.27 except #include <fenv.h>
    <http://www.gnu.org/licenses/>.  */
 
 /*Modifications:
+WBL  6 Oct 2023 add __cplusplus so can be compiled as C++ code
 WBL  4 Oct 2023 Rename invsqrt
            Strip away evolutionary framework to leave only actual invsqrt
 WBL  9 Mar 2019 Back to r1.9 make sure loglike returns 0 only if diff is 0
@@ -192,6 +193,16 @@ double invsqrt(const double x)
 	  //printf("fsg %g last normalised estimate %g shx %g\n",fsg,sg,shx);
 
 	  //sy2 = sy + sy;
+
+
+#ifdef __cplusplus
+	  /* work around g++ gcc version 10.2.1:
+	     error: jump to label ‘denorm’
+	     note:   crosses initialization of ‘const double ans’
+	     otherwise C++ compiler ok with C sources
+	  */
+	  return sg * fsg;
+#else
 	  g = sg * fsg;
 	  //e = -__builtin_fma (sy, sg, -almost_half);
 	  //do we need this? d = __builtin_fma (g, -shx);
@@ -201,6 +212,7 @@ double invsqrt(const double x)
 	  const double ans = g;//__builtin_fma (d, g);
 	  //printf("table_ieee754_invsqrt(%g) returns %g\n",x,ans);
 	  return ans;
+#endif /*__cplusplus*/
 	denorm:
 	  //assert(0); //we are not seeing this...
 	  /* For denormalised numbers, we normalise, calculate the
